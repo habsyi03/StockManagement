@@ -1,5 +1,6 @@
 package models;
 
+import entity.BahanEntity;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ public class Bahan extends DbConnection{
 	    rs = preparedStatement.executeQuery();
             
             while (rs.next()) {
-                category.add(rs.getString("kategori_bahan"));
+                category.add(rs.getString("kategori_bahan"));      
             }
             preparedStatement.close();
             rs.close();
@@ -60,4 +61,22 @@ public class Bahan extends DbConnection{
         }      
         return array;
     }
+     
+     public ArrayList<String> getIdBahan(){
+        ArrayList<String> idBahan = new ArrayList<String>();
+        try{
+            String query = "SELECT DISTINCT id_bahan FROM m_bahan order by id_bahan asc";
+            preparedStatement = con.prepareStatement(query);
+	    rs = preparedStatement.executeQuery();
+            
+            while (rs.next()) {
+                idBahan.add(rs.getString("id_bahan"));
+            }
+            preparedStatement.close();
+            rs.close();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return idBahan;
+    } 
 }

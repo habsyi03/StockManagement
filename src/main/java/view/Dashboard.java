@@ -11,12 +11,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ALI
  */
-public class Dashboard extends javax.swing.JFrame {
+public final class Dashboard extends javax.swing.JFrame {
     
     
     public Dashboard() {
         initComponents();
         setCategory();
+        setDataToTable();
     }
 
     @SuppressWarnings("unchecked")

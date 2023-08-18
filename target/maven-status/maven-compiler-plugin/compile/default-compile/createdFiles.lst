@@ -1,3 +1,4 @@
+controller\ProdukController.class
 models\Bahan.class
 models\DbConnection.class
 view\Dashboard$2.class
@@ -16,3 +17,6 @@ models\Users.class
 view\Login$4.class
 view\Jahitan.class
 view\Jahitan$1.class
+entity\BahanEntity$BahanEntityBuilder.class
+models\Produk.class
+entity\BahanEntity.class

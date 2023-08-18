@@ -1,5 +1,6 @@
 package controller;
 
+import entity.BahanEntity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,12 @@ public class BahanController {
    public static final Bahan bahan = new Bahan();
    
    public ArrayList<String> getCategory(){
-       return bahan.getCategoryBahan();
+       BahanEntity bahanEntity = BahanEntity.builder().categoryBahan(bahan.getCategoryBahan()).build();
+       return bahanEntity.getCategoryBahan();
+   }
+   
+    public ArrayList<String> getIdBahan(){
+       return bahan.getIdBahan();
    }
    
    public List<Map<String, String>> getAllDataBahan(){
@@ -20,9 +26,5 @@ public class BahanController {
    public List<Map<String, String>> getAllDataBahanPerKategori(String where){
        return bahan.getAllDataBahanPerKategori(where);
    }
-   
-   
-    
-    
     
 }
