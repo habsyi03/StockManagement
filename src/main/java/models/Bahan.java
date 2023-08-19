@@ -1,6 +1,5 @@
 package models;
 
-import entity.BahanEntity;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,5 +77,19 @@ public class Bahan extends DbConnection{
             System.out.println(e.getMessage());
         }
         return idBahan;
-    } 
+    }
+     
+    public void tambahStockBahan(String id_bahan, int plus){
+        try{
+            String query = "UPDATE m_bahan SET stok_bahan=stok_bahan + ? where id_bahan=?";
+            preparedStatement = con.prepareStatement(query);
+            preparedStatement.setInt(1, plus);
+            preparedStatement.setString(2, id_bahan);
+	    preparedStatement.executeUpdate();
+            preparedStatement.close();
+            rs.close();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

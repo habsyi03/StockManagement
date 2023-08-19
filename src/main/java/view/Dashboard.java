@@ -4,7 +4,7 @@ import controller.BahanController;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.swing.ComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -189,11 +189,21 @@ public final class Dashboard extends javax.swing.JFrame {
         helpMenu.setText("Transaksi");
 
         contentsMenuItem.setMnemonic('c');
-        contentsMenuItem.setText("Contents");
+        contentsMenuItem.setText("Bahan");
+        contentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contentsMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(contentsMenuItem);
 
         aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
+        aboutMenuItem.setText("Jahitan");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
@@ -234,6 +244,17 @@ public final class Dashboard extends javax.swing.JFrame {
            //System.out.println(cboxCatBahan.getSelectedItem().toString());
            setDataToTable();
     }//GEN-LAST:event_cboxCatBahanItemStateChanged
+
+    private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
+        TambahStockBahan tambahStokBahan = new TambahStockBahan();
+        tambahStokBahan.setVisible(true);
+    }//GEN-LAST:event_contentsMenuItemActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        // TODO add your handling code here:
+        Jahitan jahitan = new Jahitan();
+        jahitan.setVisible(true);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

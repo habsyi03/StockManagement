@@ -1,6 +1,5 @@
 package controller;
 
-import entity.BahanEntity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +10,9 @@ public class BahanController {
    public static final Bahan bahan = new Bahan();
    
    public ArrayList<String> getCategory(){
-       BahanEntity bahanEntity = BahanEntity.builder().categoryBahan(bahan.getCategoryBahan()).build();
-       return bahanEntity.getCategoryBahan();
+       //BahanEntity bahanEntity = BahanEntity.builder().categoryBahan(bahan.getCategoryBahan()).build();
+       //return bahanEntity.getCategoryBahan();
+       return bahan.getCategoryBahan();
    }
    
     public ArrayList<String> getIdBahan(){
@@ -25,6 +25,10 @@ public class BahanController {
    
    public List<Map<String, String>> getAllDataBahanPerKategori(String where){
        return bahan.getAllDataBahanPerKategori(where);
+   }
+   
+   public void addStockBahan(String id_bahan, int jumlah){
+       bahan.tambahStockBahan(id_bahan, jumlah);
    }
     
 }
