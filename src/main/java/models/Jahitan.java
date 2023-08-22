@@ -11,7 +11,7 @@ import static models.DbConnection.preparedStatement;
 public class Jahitan extends DbConnection {
     
     public List<Map<String, String>> getAllDataJahitan(){
-        return selectAllData("t_jahitan");
+        return selectData("select * from t_jahitan order by tanggal desc");
     }
     
     public void insertTJahitan(Map<String, String> param){

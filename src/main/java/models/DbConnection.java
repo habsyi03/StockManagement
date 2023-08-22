@@ -19,7 +19,7 @@ public class DbConnection {
     public static ResultSetMetaData rsmd;
     
     public DbConnection(){
-        String url = "jdbc:sqlite:src/main/java/db/stockmanagement";
+        String url = "jdbc:sqlite:src/main/java/db/stockmanagementprod";
         
         try{
             con = DriverManager.getConnection(url);
@@ -33,6 +33,31 @@ public class DbConnection {
         List<Map<String, String>> array = new ArrayList<Map<String, String>>();
         try{ 
             String sql = "select * from "+tableName;
+            preparedStatement = con.prepareStatement(sql);
+            rs = preparedStatement.executeQuery();
+            rsmd = rs.getMetaData();
+            int clmCount = rsmd.getColumnCount();
+            
+            while (rs.next()) {
+                Map<String, String> object = new HashMap<>();
+                for(int i=1;i<=clmCount;i++){
+                    String name = rsmd.getColumnName(i);
+                    object.put(name, rs.getString(name));
+                }
+                array.add(object);          
+            }
+            preparedStatement.close();
+            rs.close();
+            //con.close();
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }      
+        return array;
+    }
+    
+    public List<Map<String, String>> selectData(String sql){
+        List<Map<String, String>> array = new ArrayList<Map<String, String>>();
+        try{ 
             preparedStatement = con.prepareStatement(sql);
             rs = preparedStatement.executeQuery();
             rsmd = rs.getMetaData();
